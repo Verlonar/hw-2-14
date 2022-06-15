@@ -2,6 +2,8 @@ package ru.verlonar;
 
 import ru.verlonar.Exception.ElementIsNotExistException;
 
+import java.util.Arrays;
+
 public class StringListImpl implements StringList {
 
     private String[] stringList;
@@ -103,15 +105,7 @@ public class StringListImpl implements StringList {
     @Override
     public boolean equals(StringList otherList) {
         isItemExist(otherList);
-        if (otherList.size() != size()) {
-            return false;
-        }
-        for (int i = 0; i < currentSize; i++) {
-            if (!stringList[i].equals(otherList.get(i))) {
-                return false;
-            }
-        }
-        return true;
+        return Arrays.equals(this.toArray(), otherList.toArray());
     }
 
     @Override
